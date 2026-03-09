@@ -1,0 +1,990 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Impulso Digital 2ª Oleada — IApyme</title>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --navy: #1a1040;
+    --cyan: #4dd9c0;
+    --yellow: #f5c842;
+    --coral: #f06b6b;
+    --mint: #b8f0e6;
+    --lavender: #e8e2ff;
+    --white: #fefefe;
+    --text: #1a1040;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: #f4f2ff;
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  .cover {
+    min-height: 100vh;
+    background: var(--navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    padding: 80px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 600px; height: 600px;
+    background: radial-gradient(circle, rgba(77,217,192,0.15) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover::after {
+    content: '';
+    position: absolute;
+    bottom: -100px; left: 200px;
+    width: 400px; height: 400px;
+    background: radial-gradient(circle, rgba(245,200,66,0.1) 0%, transparent 70%);
+    border-radius: 50%;
+  }
+
+  .cover-badge {
+    background: var(--cyan);
+    color: var(--navy);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 8px 20px;
+    border-radius: 100px;
+    margin-bottom: 40px;
+    position: relative;
+  }
+
+  .cover h1 {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(52px, 8vw, 96px);
+    color: var(--white);
+    line-height: 1;
+    margin-bottom: 16px;
+    position: relative;
+  }
+
+  .cover h1 span { color: var(--cyan); }
+
+  .cover-sub {
+    font-size: 20px;
+    color: rgba(255,255,255,0.55);
+    font-weight: 300;
+    margin-bottom: 60px;
+    max-width: 500px;
+    line-height: 1.6;
+    position: relative;
+  }
+
+  .cover-partners {
+    display: flex;
+    align-items: center;
+    gap: 0;
+    margin-bottom: 52px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .partner-chip {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.13);
+    border-radius: 100px;
+    padding: 10px 20px 10px 10px;
+    transition: background 0.2s;
+  }
+
+  .partner-chip:hover { background: rgba(255,255,255,0.12); }
+
+  .partner-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 12px;
+    font-weight: 800;
+    font-family: 'Syne', sans-serif;
+    flex-shrink: 0;
+  }
+
+  .partner-dot.d1 { background: linear-gradient(135deg, #ff9ec4, #7dd4f8); color: var(--navy); }
+  .partner-dot.d2 { background: linear-gradient(135deg, #4caf7d, #2e8b4a); color: white; }
+  .partner-dot.d3 { background: linear-gradient(135deg, #f5c842, #f04f4f); color: white; }
+
+  .partner-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    color: rgba(255,255,255,0.85);
+    letter-spacing: 0.3px;
+    white-space: nowrap;
+  }
+
+  .partner-sep {
+    width: 32px;
+    text-align: center;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    flex-shrink: 0;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    position: relative;
+    flex-wrap: wrap;
+  }
+
+  .cover-meta-item { display: flex; flex-direction: column; gap: 4px; }
+  .cover-meta-item .label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.35); }
+  .cover-meta-item .value { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 16px; color: var(--white); }
+
+  .cover-logo {
+    position: absolute;
+    top: 40px; right: 60px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 22px;
+    color: var(--white);
+    opacity: 0.8;
+  }
+  .cover-logo span { color: var(--cyan); }
+
+  .section { padding: 100px 80px; position: relative; }
+
+  .section-label {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--cyan);
+    margin-bottom: 16px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .section-label::after { content: ''; display: block; width: 40px; height: 1px; background: var(--cyan); }
+
+  .section-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: clamp(32px, 4vw, 52px);
+    line-height: 1.1;
+    margin-bottom: 20px;
+    color: var(--navy);
+  }
+
+  .section-desc {
+    font-size: 17px;
+    color: #555;
+    max-width: 600px;
+    line-height: 1.7;
+    margin-bottom: 60px;
+  }
+
+  /* CONTEXT */
+  .context-section { background: var(--white); }
+
+  .context-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 50px;
+  }
+
+  .context-card {
+    background: var(--navy);
+    color: var(--white);
+    border-radius: 20px;
+    padding: 36px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .context-card::before {
+    content: '';
+    position: absolute;
+    top: -40px; right: -40px;
+    width: 120px; height: 120px;
+    background: rgba(255,255,255,0.04);
+    border-radius: 50%;
+  }
+
+  .context-card .big-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 64px;
+    color: var(--cyan);
+    line-height: 1;
+    margin-bottom: 8px;
+  }
+
+  .context-card .card-label { font-size: 14px; color: rgba(255,255,255,0.6); line-height: 1.5; }
+
+  /* FRENTES */
+  .frentes-section { background: var(--navy); }
+  .frentes-section .section-title { color: var(--white); }
+  .frentes-section .section-desc { color: rgba(255,255,255,0.5); }
+
+  .frentes-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 16px;
+  }
+
+  .frente-card {
+    border-radius: 20px;
+    padding: 36px 28px;
+    position: relative;
+    overflow: hidden;
+    min-height: 360px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    transition: transform 0.3s ease;
+  }
+
+  .frente-card:hover { transform: translateY(-6px); }
+  .frente-card.activo-1 { background: var(--cyan); }
+  .frente-card.activo-2 { background: var(--yellow); }
+  .frente-card.inactivo { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); }
+
+  .frente-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 96px;
+    line-height: 1;
+    opacity: 0.15;
+    position: absolute;
+    top: 16px; right: 16px;
+  }
+
+  .activo-1 .frente-num, .activo-2 .frente-num { color: var(--navy); }
+  .inactivo .frente-num { color: var(--white); }
+
+  .frente-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    font-weight: 700;
+    padding: 6px 14px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+    width: fit-content;
+  }
+
+  .activo-1 .frente-tag { background: rgba(26,16,64,0.15); color: var(--navy); }
+  .activo-2 .frente-tag { background: rgba(26,16,64,0.15); color: var(--navy); }
+  .inactivo .frente-tag { background: rgba(255,255,255,0.08); color: rgba(255,255,255,0.45); }
+
+  .frente-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 26px;
+    margin-bottom: 12px;
+    line-height: 1.1;
+  }
+
+  .activo-1 .frente-title, .activo-2 .frente-title { color: var(--navy); }
+  .inactivo .frente-title { color: rgba(255,255,255,0.4); }
+
+  .frente-desc { font-size: 14px; line-height: 1.6; }
+  .activo-1 .frente-desc, .activo-2 .frente-desc { color: rgba(26,16,64,0.7); }
+  .inactivo .frente-desc { color: rgba(255,255,255,0.3); }
+
+  .frente-focus {
+    margin-top: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+
+  .activo-1 .frente-focus { color: var(--navy); }
+  .activo-2 .frente-focus { color: var(--navy); }
+  .inactivo .frente-focus { display: none; }
+
+  /* STRUCTURE */
+  .structure-section { background: #f4f2ff; }
+
+  .two-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+
+  .module-card {
+    border-radius: 24px;
+    padding: 48px 44px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .module-card.mod-analisis { background: var(--cyan); }
+  .module-card.mod-seguimiento { background: var(--yellow); }
+
+  .mod-label { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; font-weight: 700; color: rgba(26,16,64,0.5); margin-bottom: 8px; }
+  .mod-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 34px; color: var(--navy); margin-bottom: 8px; line-height: 1.1; }
+  .mod-subtitle { font-size: 15px; color: rgba(26,16,64,0.6); margin-bottom: 36px; line-height: 1.5; }
+
+  .mod-steps { display: flex; flex-direction: column; gap: 16px; }
+
+  .mod-step { display: flex; gap: 16px; align-items: flex-start; }
+
+  .step-dot {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: rgba(26,16,64,0.12);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Syne', sans-serif;
+    font-weight: 800; font-size: 13px;
+    color: var(--navy);
+    flex-shrink: 0;
+    margin-top: 2px;
+  }
+
+  .step-content .step-name { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--navy); margin-bottom: 3px; }
+  .step-content .step-desc { font-size: 13px; color: rgba(26,16,64,0.6); line-height: 1.5; }
+
+  /* COMMUNITY */
+  .community-section { background: var(--white); }
+
+  .community-highlight {
+    background: var(--navy);
+    border-radius: 28px;
+    padding: 60px 64px;
+    display: flex;
+    gap: 60px;
+    align-items: center;
+    margin-top: 50px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .community-highlight::before {
+    content: '"';
+    font-family: 'Syne', sans-serif;
+    font-size: 300px;
+    color: rgba(77,217,192,0.06);
+    position: absolute;
+    top: -60px; left: 30px;
+    line-height: 1;
+    pointer-events: none;
+  }
+
+  .community-text { flex: 1; }
+  .community-text .quote { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 26px; color: var(--white); line-height: 1.4; margin-bottom: 20px; }
+  .community-text .quote em { color: var(--cyan); font-style: normal; }
+  .community-text .quote-sub { font-size: 15px; color: rgba(255,255,255,0.45); line-height: 1.6; }
+
+  .community-actions { display: flex; flex-direction: column; gap: 16px; flex-shrink: 0; min-width: 240px; }
+
+  .action-pill {
+    background: rgba(255,255,255,0.07);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 16px;
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+  }
+
+  .action-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 18px; flex-shrink: 0;
+  }
+
+  .action-icon.c { background: rgba(77,217,192,0.15); }
+  .action-icon.y { background: rgba(245,200,66,0.15); }
+  .action-icon.r { background: rgba(240,107,107,0.15); }
+  .action-pill .action-text { font-size: 13px; font-weight: 500; color: var(--white); line-height: 1.4; }
+
+  /* BUDGET */
+  .budget-section { background: #f4f2ff; }
+
+  .budget-table {
+    background: var(--white);
+    border-radius: 24px;
+    overflow: hidden;
+    margin-top: 50px;
+    box-shadow: 0 4px 40px rgba(26,16,64,0.06);
+  }
+
+  .budget-header {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 20px 32px;
+    background: var(--navy);
+  }
+
+  .budget-header span {
+    font-family: 'Syne', sans-serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.4);
+    font-weight: 600;
+  }
+
+  .budget-row {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 20px 32px;
+    border-bottom: 1px solid rgba(26,16,64,0.06);
+    align-items: center;
+    transition: background 0.2s;
+  }
+
+  .budget-row:hover { background: rgba(77,217,192,0.04); }
+
+  .budget-row.group-label {
+    background: var(--lavender);
+    padding: 12px 32px;
+    cursor: default;
+  }
+
+  .budget-row.group-label:hover { background: var(--lavender); }
+
+  .budget-row.group-label .concept {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 13px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--navy);
+  }
+
+  .concept { font-size: 14px; color: var(--navy); font-weight: 500; padding-right: 16px; line-height: 1.4; }
+  .concept small { display: block; font-size: 12px; font-weight: 400; color: #888; margin-top: 2px; }
+  .budget-cell { font-size: 14px; color: #555; }
+  .budget-cell.price { font-family: 'Syne', sans-serif; font-weight: 700; color: var(--navy); font-size: 15px; }
+
+  .budget-total {
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr 1fr;
+    padding: 24px 32px;
+    background: var(--navy);
+    align-items: center;
+  }
+
+  .budget-total .total-label { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 18px; color: var(--white); }
+  .budget-total .total-price { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 24px; color: var(--cyan); grid-column: 5; }
+
+  .tag-mod {
+    display: inline-flex;
+    padding: 4px 10px;
+    border-radius: 100px;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  .tag-mod.an { background: rgba(77,217,192,0.15); color: #0a7a64; }
+  .tag-mod.se { background: rgba(245,200,66,0.15); color: #8a6a00; }
+  .tag-mod.co { background: var(--lavender); color: var(--navy); }
+
+  /* DIFERENCIADORES */
+  .diff-section { background: var(--white); }
+
+  .diff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin-top: 50px;
+  }
+
+  .diff-card {
+    border: 1.5px solid rgba(26,16,64,0.08);
+    border-radius: 20px;
+    padding: 36px;
+    transition: border-color 0.2s, transform 0.2s;
+  }
+
+  .diff-card:hover { border-color: var(--cyan); transform: translateY(-4px); }
+
+  .diff-icon {
+    width: 52px; height: 52px;
+    border-radius: 14px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 24px;
+    margin-bottom: 20px;
+  }
+
+  .diff-icon.c { background: rgba(77,217,192,0.12); }
+  .diff-icon.y { background: rgba(245,200,66,0.12); }
+  .diff-icon.p { background: rgba(232,226,255,0.8); }
+
+  .diff-title { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 18px; color: var(--navy); margin-bottom: 10px; }
+  .diff-desc { font-size: 14px; color: #666; line-height: 1.6; }
+
+  /* CIERRE */
+  .close-section {
+    background: var(--navy);
+    min-height: 50vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    padding: 80px;
+  }
+
+  .close-section::before {
+    content: '';
+    position: absolute;
+    top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    width: 800px; height: 800px;
+    background: radial-gradient(circle, rgba(77,217,192,0.08) 0%, transparent 60%);
+    border-radius: 50%;
+  }
+
+  .cta-title { font-family: 'Syne', sans-serif; font-weight: 800; font-size: clamp(36px, 5vw, 64px); color: var(--white); line-height: 1.1; margin-bottom: 20px; position: relative; }
+  .cta-title span { color: var(--cyan); }
+  .cta-sub { font-size: 17px; color: rgba(255,255,255,0.45); max-width: 500px; line-height: 1.6; margin-bottom: 50px; position: relative; }
+
+  .cta-contact { display: flex; gap: 32px; position: relative; flex-wrap: wrap; justify-content: center; }
+  .cta-item { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .cta-item .c-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
+  .cta-item .c-value { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--cyan); }
+
+  @media (max-width: 900px) {
+    .section { padding: 60px 24px; }
+    .cover { padding: 50px 24px; }
+    .frentes-grid { grid-template-columns: 1fr 1fr; }
+    .two-col { grid-template-columns: 1fr; }
+    .context-grid { grid-template-columns: 1fr; }
+    .diff-grid { grid-template-columns: 1fr 1fr; }
+    .budget-header { grid-template-columns: 2fr 1fr 1fr; }
+    .budget-header span:nth-child(3), .budget-header span:nth-child(4) { display: none; }
+    .budget-row { grid-template-columns: 2fr 1fr 1fr; }
+    .budget-row .budget-cell:nth-child(3), .budget-row .budget-cell:nth-child(4) { display: none; }
+    .budget-total { grid-template-columns: 2fr 1fr 1fr; }
+    .budget-total .total-price { grid-column: 3; }
+    .community-highlight { flex-direction: column; padding: 40px 24px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- COVER -->
+<section class="cover">
+  <div class="cover-logo">IA<span>pyme</span></div>
+  <div class="cover-badge">Propuesta Comercial · Marzo 2026</div>
+  <h1>Impulso<br>Digital<br><span>2ª Oleada</span></h1>
+  <div class="cover-partners">
+    <div class="partner-chip">
+      <div class="partner-dot d1">IA</div>
+      <span class="partner-name">IApyme</span>
+    </div>
+    <div class="partner-sep">×</div>
+    <div class="partner-chip">
+      <div class="partner-dot d2">AE</div>
+      <span class="partner-name">Amurrioko Enpresak</span>
+    </div>
+    <div class="partner-sep">×</div>
+    <div class="partner-chip">
+      <div class="partner-dot d3">NP</div>
+      <span class="partner-name">Notepierdasenlasredes</span>
+    </div>
+  </div>
+  <div class="cover-meta">
+    <div class="cover-meta-item">
+      <span class="label">Dirigido a</span>
+      <span class="value">Amurrioko Enpresak</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Presupuesto orientativo</span>
+      <span class="value">10.000 – 12.000 €</span>
+    </div>
+    <div class="cover-meta-item">
+      <span class="label">Preparado por</span>
+      <span class="value">IApyme Consultores</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTEXTO -->
+<section class="section context-section">
+  <div class="section-label">Punto de partida</div>
+  <h2 class="section-title">Lo que ya hemos construido juntos</h2>
+  <p class="section-desc">La primera oleada de Impulso Digital dejó una base sólida. Ahora toca profundizar, acompañar a los que ya están en el camino y abrir las puertas a nuevas empresas.</p>
+
+  <div class="context-grid">
+    <div class="context-card">
+      <div class="big-num">11</div>
+      <div class="card-label">Empresas acompañadas en la primera oleada de Amurrio</div>
+    </div>
+    <div class="context-card">
+      <div class="big-num">4</div>
+      <div class="card-label">Fases completadas: Test · Auditoría · Acompañamiento · Formación grupal</div>
+    </div>
+    <div class="context-card">
+      <div class="big-num">100%</div>
+      <div class="card-label">Tasa de satisfacción. Todas las empresas cerraron el proceso con éxito</div>
+    </div>
+  </div>
+
+  <div style="background:#f4f2ff; border-radius:20px; padding:36px 40px; border-left: 4px solid var(--cyan);">
+    <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:18px; color:var(--navy); margin-bottom:20px;">¿Qué cambia en la 2ª Oleada?</div>
+    <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:24px;">
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:6px;">📌 Más frentes</div>
+        <div style="font-size:13px; color:#666; line-height:1.5;">No solo nuevas empresas. También seguimiento de las que ya pasaron por la primera oleada.</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:6px;">🔓 Más flexibilidad</div>
+        <div style="font-size:13px; color:#666; line-height:1.5;">El proceso se adapta a cada empresa. No hay un único camino — hay uno para cada caso.</div>
+      </div>
+      <div>
+        <div style="font-size:13px; font-weight:600; color:var(--navy); margin-bottom:6px;">🤝 Más comunidad</div>
+        <div style="font-size:13px; color:#666; line-height:1.5;">Las formaciones grupales y dinámicas colectivas se potencian como elemento diferencial clave.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 4 FRENTES -->
+<section class="section frentes-section">
+  <div class="section-label" style="color:rgba(77,217,192,0.7)">Estructura del programa</div>
+  <h2 class="section-title">4 frentes, 2 protagonistas</h2>
+  <p class="section-desc">El programa se articula en cuatro líneas de trabajo. Nuestra propuesta se centra en las dos primeras — donde generamos más valor real y demostrable.</p>
+
+  <div class="frentes-grid">
+    <div class="frente-card activo-1">
+      <div class="frente-num">1</div>
+      <div class="frente-tag">🎯 Foco principal</div>
+      <div class="frente-title">Análisis</div>
+      <div class="frente-desc">Incorporación de nuevas empresas al programa. Diagnóstico desde cero, identificación de oportunidades IA y hoja de ruta personalizada.</div>
+      <div class="frente-focus">→ NUEVO ingreso al ecosistema</div>
+    </div>
+
+    <div class="frente-card activo-2">
+      <div class="frente-num">2</div>
+      <div class="frente-tag">🎯 Foco principal</div>
+      <div class="frente-title">Seguimiento</div>
+      <div class="frente-desc">Empresas de la primera oleada que quieran continuar. Revisión de avances, profundización en lo implementado y siguientes pasos concretos.</div>
+      <div class="frente-focus">→ PROFUNDIZACIÓN del proceso</div>
+    </div>
+
+    <div class="frente-card inactivo">
+      <div class="frente-num">3</div>
+      <div class="frente-tag">⚡ Transversal</div>
+      <div class="frente-title">Innovación</div>
+      <div class="frente-desc">No como servicio aislado — lo aplicamos continuamente dentro de los otros módulos, mostrando herramientas nuevas y tendencias emergentes en cada sesión.</div>
+    </div>
+
+    <div class="frente-card inactivo">
+      <div class="frente-num">4</div>
+      <div class="frente-tag">⚙️ Caso a caso</div>
+      <div class="frente-title">Técnico</div>
+      <div class="frente-desc">Soluciones tecnológicas específicas. Exploramos caso por caso si la necesidad lo requiere, con aliados técnicos si es necesario.</div>
+    </div>
+  </div>
+</section>
+
+<!-- MÓDULOS -->
+<section class="section structure-section">
+  <div class="section-label">Cómo lo hacemos</div>
+  <h2 class="section-title">Dos módulos, un mismo norte</h2>
+  <p class="section-desc">Cada módulo tiene su propio ritmo, pero ambos comparten la filosofía: acompañamiento real, resultados tangibles, sin tecnicismos.</p>
+
+  <div class="two-col">
+    <div class="module-card mod-analisis">
+      <div class="mod-label">Módulo 01</div>
+      <div class="mod-title">Análisis</div>
+      <div class="mod-subtitle">Para empresas nuevas. Incorporarlas al ecosistema de IA de forma ordenada y útil.</div>
+      <div class="mod-steps">
+        <div class="mod-step">
+          <div class="step-dot">A</div>
+          <div class="step-content">
+            <div class="step-name">Test de diagnóstico inicial</div>
+            <div class="step-desc">Cuestionario online para conocer el punto de partida digital antes de la primera sesión.</div>
+          </div>
+        </div>
+        <div class="mod-step">
+          <div class="step-dot">B</div>
+          <div class="step-content">
+            <div class="step-name">Auditoría Digital IA</div>
+            <div class="step-desc">Sesión individualizada de análisis: procesos, herramientas, equipo y oportunidades con IA.</div>
+          </div>
+        </div>
+        <div class="mod-step">
+          <div class="step-dot">C</div>
+          <div class="step-content">
+            <div class="step-name">Tutorías de acompañamiento</div>
+            <div class="step-desc">2–3 sesiones trabajando codo a codo — implementando, formando y creando hábitos digitales.</div>
+          </div>
+        </div>
+        <div class="mod-step">
+          <div class="step-dot">D</div>
+          <div class="step-content">
+            <div class="step-name">Entregable final</div>
+            <div class="step-desc">Documento con propuestas de mejora, flujos trabajados e informe para la entidad contratante.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="module-card mod-seguimiento">
+      <div class="mod-label">Módulo 02</div>
+      <div class="mod-title">Seguimiento</div>
+      <div class="mod-subtitle">Para empresas de la primera oleada que quieran continuar. Profundizar, consolidar y dar el siguiente salto.</div>
+      <div class="mod-steps">
+        <div class="mod-step">
+          <div class="step-dot">A</div>
+          <div class="step-content">
+            <div class="step-name">Check-up de avances</div>
+            <div class="step-desc">Revisión de qué se ha implementado, qué ha funcionado y qué necesita ajuste desde la primera oleada.</div>
+          </div>
+        </div>
+        <div class="mod-step">
+          <div class="step-dot">B</div>
+          <div class="step-content">
+            <div class="step-name">Nuevos retos identificados</div>
+            <div class="step-desc">Con la base ya puesta, exploramos el siguiente nivel: nuevas herramientas o expansión de uso.</div>
+          </div>
+        </div>
+        <div class="mod-step">
+          <div class="step-dot">C</div>
+          <div class="step-content">
+            <div class="step-name">Sesión de profundización</div>
+            <div class="step-desc">1–2 tutorías enfocadas en áreas de mayor impacto para cada negocio en su nuevo estadio digital.</div>
+          </div>
+        </div>
+        <div class="mod-step">
+          <div class="step-dot">D</div>
+          <div class="step-content">
+            <div class="step-name">Informe de evolución</div>
+            <div class="step-desc">Documento comparativo (oleada 1 vs 2) mostrando el progreso real de cada negocio.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- COMUNIDAD -->
+<section class="section community-section">
+  <div class="section-label">El factor que marca la diferencia</div>
+  <h2 class="section-title">El poder de aprender en comunidad</h2>
+  <p class="section-desc">Lo que más valoran los directivos de Amurrioko Empresak no es solo el acompañamiento individual — es el sentimiento de estar avanzando juntos.</p>
+
+  <div class="community-highlight">
+    <div class="community-text">
+      <div class="quote">Las empresas de Amurrio no solo compiten — <em>también se apoyan</em>. Ese tejido comunitario es nuestro mayor activo formativo.</div>
+      <div class="quote-sub">Las sesiones grupales no son solo formación: son networking, inspiración y un espejo donde cada empresa ve reflejados sus propios retos. Lo potenciamos al máximo en esta segunda oleada.</div>
+    </div>
+    <div class="community-actions">
+      <div class="action-pill">
+        <div class="action-icon c">🎓</div>
+        <div class="action-text">Workshops grupales temáticos (ej: IA para ventas, IA para atención al cliente)</div>
+      </div>
+      <div class="action-pill">
+        <div class="action-icon y">💡</div>
+        <div class="action-text">Sesiones de inspiración con casos reales de empresas del propio municipio</div>
+      </div>
+      <div class="action-pill">
+        <div class="action-icon r">🤝</div>
+        <div class="action-text">Jornada de cierre conjunta: celebrar avances y trazar el camino colectivo</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRESUPUESTO -->
+<section class="section budget-section">
+  <div class="section-label">Inversión</div>
+  <h2 class="section-title">Presupuesto orientativo</h2>
+  <p class="section-desc">Estructura flexible. Adaptamos el alcance según el número de empresas y las necesidades de la entidad contratante. IVA no incluido.</p>
+
+  <div class="budget-table">
+    <div class="budget-header">
+      <span>Concepto</span>
+      <span>Módulo</span>
+      <span>Tipo</span>
+      <span>Horas est.</span>
+      <span>Total</span>
+    </div>
+
+    <div class="budget-row group-label">
+      <div class="concept">MÓDULO 1 — Análisis · Nuevas empresas</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Coordinación y diseño del programa<small>Reuniones con entidad, adaptación de materiales</small></div>
+      <div class="budget-cell"><span class="tag-mod an">Análisis</span></div>
+      <div class="budget-cell">Estratégica</div>
+      <div class="budget-cell">3h</div>
+      <div class="budget-cell price">300 €</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Test inicial + Auditorías Digitales<small>Est. 6–8 empresas · 3h/empresa · 75€/h</small></div>
+      <div class="budget-cell"><span class="tag-mod an">Análisis</span></div>
+      <div class="budget-cell">Técnica I</div>
+      <div class="budget-cell">~21–24h</div>
+      <div class="budget-cell price">1.800 €</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Tutorías de acompañamiento individuales<small>Est. 2 sesiones/empresa · 75€/h</small></div>
+      <div class="budget-cell"><span class="tag-mod an">Análisis</span></div>
+      <div class="budget-cell">Técnica I</div>
+      <div class="budget-cell">~16–20h</div>
+      <div class="budget-cell price">1.500 €</div>
+    </div>
+
+    <div class="budget-row group-label">
+      <div class="concept">MÓDULO 2 — Seguimiento · Empresas 1ª Oleada</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Check-up y revisión de avances<small>Empresas participantes · sesión de 1,5h cada una</small></div>
+      <div class="budget-cell"><span class="tag-mod se">Seguimiento</span></div>
+      <div class="budget-cell">Técnica I</div>
+      <div class="budget-cell">~16h</div>
+      <div class="budget-cell price">1.200 €</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Sesiones de profundización individuales<small>Est. 1–2 sesiones por empresa según necesidad</small></div>
+      <div class="budget-cell"><span class="tag-mod se">Seguimiento</span></div>
+      <div class="budget-cell">Técnica I</div>
+      <div class="budget-cell">~16h</div>
+      <div class="budget-cell price">1.200 €</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Informes de evolución por empresa<small>Comparativa oleada 1 vs 2 · entregable para entidad</small></div>
+      <div class="budget-cell"><span class="tag-mod se">Seguimiento</span></div>
+      <div class="budget-cell">Técnica II</div>
+      <div class="budget-cell">4h</div>
+      <div class="budget-cell price">300 €</div>
+    </div>
+
+    <div class="budget-row group-label">
+      <div class="concept">FORMACIÓN GRUPAL & COMUNIDAD</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">2–3 Workshops grupales temáticos<small>Sesiones abiertas a todas las empresas · 2h/taller</small></div>
+      <div class="budget-cell"><span class="tag-mod co">Comunidad</span></div>
+      <div class="budget-cell">Formativa</div>
+      <div class="budget-cell">6–8h</div>
+      <div class="budget-cell price">1.200 €</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Jornada de cierre y celebración colectiva<small>Resumen de resultados + dinámica de comunidad</small></div>
+      <div class="budget-cell"><span class="tag-mod co">Comunidad</span></div>
+      <div class="budget-cell">Formativa</div>
+      <div class="budget-cell">3h</div>
+      <div class="budget-cell price">450 €</div>
+    </div>
+    <div class="budget-row">
+      <div class="concept">Coordinación global e informes finales para entidad<small>Seguimiento continuo, comunicación y reporting</small></div>
+      <div class="budget-cell"><span class="tag-mod co">Comunidad</span></div>
+      <div class="budget-cell">Estratégica</div>
+      <div class="budget-cell">5h</div>
+      <div class="budget-cell price">500 €</div>
+    </div>
+
+    <div class="budget-total">
+      <div class="total-label">TOTAL ORIENTATIVO</div>
+      <div></div><div></div><div></div>
+      <div class="total-price">~8.450 – 11.000 €</div>
+    </div>
+    <div style="padding:16px 32px; background:rgba(26,16,64,0.03);">
+      <div style="font-size:12px; color:#888; line-height:1.7;">
+        💡 <strong>Nota:</strong> El presupuesto varía según el nº de empresas nuevas y la intensidad del seguimiento. El rango permite ajustar al techo de 10–12k. <strong>No incluye IVA (21%).</strong> Se puede modularizar si la entidad prefiere contratar por bloques independientes.
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- DIFERENCIADORES -->
+<section class="section diff-section">
+  <div class="section-label">Por qué IApyme</div>
+  <h2 class="section-title">Lo que no cambia entre oleadas</h2>
+  <p class="section-desc">Nuestra forma de trabajar. Lo que nos distingue y lo que las empresas de Amurrio ya conocen por experiencia propia.</p>
+
+  <div class="diff-grid">
+    <div class="diff-card">
+      <div class="diff-icon c">🧭</div>
+      <div class="diff-title">Siempre aplicado</div>
+      <div class="diff-desc">Nada de teoría por teoría. Cada sesión acaba con algo concreto implementado que el negocio puede usar desde mañana.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon y">🏘️</div>
+      <div class="diff-title">Enfoque de comunidad</div>
+      <div class="diff-desc">Las empresas de Amurrio aprenden más y mejor cuando avanzan juntas. El colectivo es nuestra palanca más potente.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon p">🔄</div>
+      <div class="diff-title">Continuidad real</div>
+      <div class="diff-desc">Sabemos de dónde viene cada empresa. La 2ª oleada no empieza desde cero — empieza donde se quedó cada negocio.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon c">📊</div>
+      <div class="diff-title">Evidencia del avance</div>
+      <div class="diff-desc">Informes antes y después, seguimiento online, entregables reales. El progreso es visible y justificable.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon y">🎯</div>
+      <div class="diff-title">Flexibilidad total</div>
+      <div class="diff-desc">No hay una sola plantilla. Adaptamos el proceso para que encaje de verdad con lo que necesita cada empresa en este momento.</div>
+    </div>
+    <div class="diff-card">
+      <div class="diff-icon p">⚡</div>
+      <div class="diff-title">Innovación integrada</div>
+      <div class="diff-desc">No esperamos al bloque de "innovación". Lo integramos en cada sesión, cada tutoría, cada workshop de forma natural.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section class="close-section">
+  <h2 class="cta-title">¿Seguimos<br><span>construyendo juntos?</span></h2>
+  <p class="cta-sub">Amurrio ya tiene una comunidad de empresas con base en IA. La segunda oleada es el momento de consolidar eso y hacerlo crecer.</p>
+  <div class="cta-contact">
+    <div class="cta-item">
+      <span class="c-label">Consultora</span>
+      <span class="c-value">IApyme Consultores</span>
+    </div>
+    <div class="cta-item">
+      <span class="c-label">Sede</span>
+      <span class="c-value">Bilbao, Uribitarte 6</span>
+    </div>
+    <div class="cta-item">
+      <span class="c-label">Bilbao, Marzo 2026</span>
+      <span class="c-value">iapymeconsultores.com</span>
+    </div>
+  </div>
+</section>
+
+</body>
+</html>
