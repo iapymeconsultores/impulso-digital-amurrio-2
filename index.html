@@ -579,7 +579,277 @@
   .cta-item .c-label { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255,255,255,0.3); }
   .cta-item .c-value { font-family: 'Syne', sans-serif; font-weight: 700; font-size: 15px; color: var(--cyan); }
 
-  @media (max-width: 900px) {
+  /* WORKSHOP BIBLIOGRAPHY */
+  .ws-bib {
+    margin-top: 48px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+
+  .ws-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 20px;
+    padding: 32px 28px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.2s;
+  }
+
+  .ws-card:hover { border-color: rgba(240,107,107,0.35); }
+
+  .ws-card::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #f06b6b, rgba(240,107,107,0.2));
+  }
+
+  .ws-num {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 48px;
+    color: rgba(240,107,107,0.12);
+    line-height: 1;
+    position: absolute;
+    top: 16px; right: 20px;
+  }
+
+  .ws-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(240,107,107,0.12);
+    border: 1px solid rgba(240,107,107,0.2);
+    color: #f06b6b;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 5px 12px;
+    border-radius: 100px;
+    margin-bottom: 14px;
+  }
+
+  .ws-who {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    padding: 4px 10px;
+    border-radius: 100px;
+    margin-bottom: 16px;
+  }
+
+  .ws-who.seg { background: rgba(245,200,66,0.12); color: var(--yellow); }
+  .ws-who.ini { background: rgba(77,217,192,0.12); color: var(--cyan); }
+  .ws-who.both { background: rgba(232,226,255,0.1); color: rgba(232,226,255,0.8); }
+
+  .ws-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 17px;
+    color: var(--white);
+    margin-bottom: 12px;
+    line-height: 1.2;
+  }
+
+  .ws-desc {
+    font-size: 13px;
+    color: rgba(255,255,255,0.45);
+    line-height: 1.7;
+  }
+
+  .ws-when {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 11px;
+    color: rgba(255,255,255,0.25);
+    font-weight: 500;
+  }
+
+  .ws-when::before {
+    content: '';
+    display: block;
+    width: 20px; height: 1px;
+    background: rgba(255,255,255,0.15);
+  }
+
+
+  .crono-section {
+    background: var(--navy);
+    padding: 100px 80px;
+  }
+
+  .crono-section .section-label { color: rgba(77,217,192,0.7); }
+  .crono-section .section-label::after { background: rgba(77,217,192,0.7); }
+  .crono-section .section-title { color: var(--white); }
+  .crono-section .section-desc { color: rgba(255,255,255,0.45); }
+
+  .crono-wrap {
+    margin-top: 10px;
+    overflow-x: auto;
+  }
+
+  .crono-months {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+    border-radius: 16px;
+    overflow: hidden;
+  }
+
+  .crono-month-header {
+    background: rgba(255,255,255,0.06);
+    border-right: 1px solid rgba(255,255,255,0.06);
+    padding: 14px 10px;
+    text-align: center;
+  }
+
+  .crono-month-header:last-child { border-right: none; }
+
+  .crono-month-name {
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    font-size: 12px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.5);
+  }
+
+  .crono-body {
+    display: grid;
+    grid-template-columns: repeat(8, 1fr);
+    gap: 0;
+    min-height: 280px;
+    position: relative;
+  }
+
+  .crono-col {
+    border-right: 1px solid rgba(255,255,255,0.05);
+    padding: 16px 10px;
+    position: relative;
+    min-height: 280px;
+  }
+
+  .crono-col:last-child { border-right: none; }
+
+  .crono-col.vacaciones {
+    background: rgba(255,255,255,0.02);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .vac-x {
+    font-size: 40px;
+    color: rgba(255,255,255,0.08);
+    font-family: 'Syne', sans-serif;
+    font-weight: 800;
+    line-height: 1;
+  }
+
+  .vac-label {
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: rgba(255,255,255,0.2);
+    text-align: center;
+  }
+
+  .crono-pill {
+    border-radius: 10px;
+    padding: 10px 12px;
+    margin-bottom: 10px;
+  }
+
+  .crono-pill.seguimiento { background: rgba(245,200,66,0.15); border: 1px solid rgba(245,200,66,0.25); }
+  .crono-pill.iniciacion { background: rgba(77,217,192,0.15); border: 1px solid rgba(77,217,192,0.25); }
+  .crono-pill.ambos { background: rgba(232,226,255,0.1); border: 1px solid rgba(232,226,255,0.2); }
+  .crono-pill.workshop { background: rgba(240,107,107,0.12); border: 1px solid rgba(240,107,107,0.2); }
+
+  .crono-pill-title {
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 11px;
+    margin-bottom: 4px;
+  }
+
+  .crono-pill.seguimiento .crono-pill-title { color: var(--yellow); }
+  .crono-pill.iniciacion .crono-pill-title { color: var(--cyan); }
+  .crono-pill.ambos .crono-pill-title { color: rgba(232,226,255,0.9); }
+  .crono-pill.workshop .crono-pill-title { color: #f06b6b; }
+
+  .crono-pill-desc {
+    font-size: 10px;
+    line-height: 1.4;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .crono-span {
+    position: absolute;
+    top: 16px;
+    height: 44px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    padding: 0 14px;
+    font-family: 'Syne', sans-serif;
+    font-weight: 700;
+    font-size: 12px;
+    letter-spacing: 0.5px;
+    z-index: 2;
+    white-space: nowrap;
+  }
+
+  .crono-span.seg-span {
+    background: rgba(245,200,66,0.18);
+    border: 1px solid rgba(245,200,66,0.3);
+    color: var(--yellow);
+    left: 0;
+    width: calc(300% + 30px);
+  }
+
+  .crono-span.ini-span {
+    background: rgba(77,217,192,0.18);
+    border: 1px solid rgba(77,217,192,0.3);
+    color: var(--cyan);
+    left: 0;
+    width: calc(400% + 45px);
+  }
+
+  .crono-legend {
+    display: flex;
+    gap: 24px;
+    margin-top: 24px;
+    flex-wrap: wrap;
+  }
+
+  .crono-legend-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: rgba(255,255,255,0.45);
+  }
+
+  .crono-legend-dot {
+    width: 12px; height: 12px;
+    border-radius: 3px;
+    flex-shrink: 0;
+  }
+
+
     .section { padding: 60px 24px; }
     .cover { padding: 50px 24px; }
     .frentes-grid { grid-template-columns: 1fr 1fr; }
@@ -623,10 +893,6 @@
     <div class="cover-meta-item">
       <span class="label">Dirigido a</span>
       <span class="value">Amurrioko Enpresak</span>
-    </div>
-    <div class="cover-meta-item">
-      <span class="label">Presupuesto orientativo</span>
-      <span class="value">10.000 – 12.000 €</span>
     </div>
     <div class="cover-meta-item">
       <span class="label">Preparado por</span>
@@ -675,41 +941,44 @@
   </div>
 </section>
 
-<!-- 4 FRENTES -->
+<!-- FRENTES -->
 <section class="section frentes-section">
   <div class="section-label" style="color:rgba(77,217,192,0.7)">Estructura del programa</div>
-  <h2 class="section-title">4 frentes, 2 protagonistas</h2>
-  <p class="section-desc">El programa se articula en cuatro líneas de trabajo. Nuestra propuesta se centra en las dos primeras — donde generamos más valor real y demostrable.</p>
+  <h2 class="section-title">Dos módulos, un hilo transversal</h2>
+  <p class="section-desc">El programa se articula en dos módulos principales. La innovación y lo técnico no son bloques aparte — están integrados y presentes en cada paso del proceso.</p>
 
-  <div class="frentes-grid">
-    <div class="frente-card activo-1">
+  <div style="display:grid; grid-template-columns:1fr 1fr; gap:20px; margin-bottom:20px;">
+    <div class="frente-card activo-1" style="min-height:280px;">
       <div class="frente-num">1</div>
-      <div class="frente-tag">🎯 Foco principal</div>
-      <div class="frente-title">Análisis</div>
-      <div class="frente-desc">Incorporación de nuevas empresas al programa. Diagnóstico desde cero, identificación de oportunidades IA y hoja de ruta personalizada.</div>
+      <div class="frente-tag">🎯 Módulo principal</div>
+      <div class="frente-title">Iniciación</div>
+      <div class="frente-desc">Incorporación de nuevas empresas al programa. Diagnóstico desde cero, identificación de oportunidades con IA y hoja de ruta personalizada para cada negocio.</div>
       <div class="frente-focus">→ NUEVO ingreso al ecosistema</div>
     </div>
 
-    <div class="frente-card activo-2">
+    <div class="frente-card activo-2" style="min-height:280px;">
       <div class="frente-num">2</div>
-      <div class="frente-tag">🎯 Foco principal</div>
+      <div class="frente-tag">🎯 Módulo principal</div>
       <div class="frente-title">Seguimiento</div>
-      <div class="frente-desc">Empresas de la primera oleada que quieran continuar. Revisión de avances, profundización en lo implementado y siguientes pasos concretos.</div>
+      <div class="frente-desc">Empresas de la primera oleada que quieran continuar. Revisión de avances, profundización en lo implementado y definición de siguientes pasos concretos.</div>
       <div class="frente-focus">→ PROFUNDIZACIÓN del proceso</div>
     </div>
+  </div>
 
-    <div class="frente-card inactivo">
-      <div class="frente-num">3</div>
-      <div class="frente-tag">⚡ Transversal</div>
-      <div class="frente-title">Innovación</div>
-      <div class="frente-desc">No como servicio aislado — lo aplicamos continuamente dentro de los otros módulos, mostrando herramientas nuevas y tendencias emergentes en cada sesión.</div>
+  <div style="background:rgba(255,255,255,0.06); border:1px solid rgba(255,255,255,0.12); border-radius:16px; padding:28px 32px; display:grid; grid-template-columns:1fr 1fr; gap:32px;">
+    <div style="display:flex; gap:16px; align-items:flex-start;">
+      <div style="font-size:24px; flex-shrink:0; margin-top:2px;">⚡</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:15px; color:var(--cyan); margin-bottom:6px;">Innovación — transversal</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6;">No es un módulo separado. La aplicamos en cada sesión y tutoría: nuevas herramientas, tendencias emergentes y casos reales integrados de forma natural en el proceso.</div>
+      </div>
     </div>
-
-    <div class="frente-card inactivo">
-      <div class="frente-num">4</div>
-      <div class="frente-tag">⚙️ Caso a caso</div>
-      <div class="frente-title">Técnico</div>
-      <div class="frente-desc">Soluciones tecnológicas específicas. Exploramos caso por caso si la necesidad lo requiere, con aliados técnicos si es necesario.</div>
+    <div style="display:flex; gap:16px; align-items:flex-start;">
+      <div style="font-size:24px; flex-shrink:0; margin-top:2px;">⚙️</div>
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:15px; color:var(--yellow); margin-bottom:6px;">Técnico — opción a valorar</div>
+        <div style="font-size:13px; color:rgba(255,255,255,0.45); line-height:1.6;">Si durante el proceso se detecta una necesidad técnica específica, se estudia y propone como opción dentro del propio servicio, adaptando el alcance caso a caso.</div>
+      </div>
     </div>
   </div>
 </section>
@@ -723,7 +992,7 @@
   <div class="two-col">
     <div class="module-card mod-analisis">
       <div class="mod-label">Módulo 01</div>
-      <div class="mod-title">Análisis</div>
+      <div class="mod-title">Iniciación</div>
       <div class="mod-subtitle">Para empresas nuevas. Incorporarlas al ecosistema de IA de forma ordenada y útil.</div>
       <div class="mod-steps">
         <div class="mod-step">
@@ -803,8 +1072,8 @@
 
   <div class="community-highlight">
     <div class="community-text">
-      <div class="quote">Las empresas de Amurrio no solo compiten — <em>también se apoyan</em>. Ese tejido comunitario es nuestro mayor activo formativo.</div>
-      <div class="quote-sub">Las sesiones grupales no son solo formación: son networking, inspiración y un espejo donde cada empresa ve reflejados sus propios retos. Lo potenciamos al máximo en esta segunda oleada.</div>
+      <div class="quote">Las empresas de Amurrio <em>comparten, se nutren y se retroalimentan.</em> Juntas construyen un Amurrio más unido y comunitario.</div>
+      <div class="quote-sub">Las sesiones grupales no son solo formación: son un espacio donde compartir experiencias, resolver dudas comunes e inspirarse mutuamente. Cada empresa aprende de las demás y el ecosistema entero crece más fuerte.</div>
     </div>
     <div class="community-actions">
       <div class="action-pill">
@@ -827,100 +1096,159 @@
 <section class="section budget-section">
   <div class="section-label">Inversión</div>
   <h2 class="section-title">Presupuesto orientativo</h2>
-  <p class="section-desc">Estructura flexible. Adaptamos el alcance según el número de empresas y las necesidades de la entidad contratante. IVA no incluido.</p>
+  <p class="section-desc">Estructura por paquete de servicio por empresa. El coste se divide en tres bloques: coste fijo del programa, coste por empresa de iniciación y coste por empresa de seguimiento. IVA no incluido.</p>
 
-  <div class="budget-table">
-    <div class="budget-header">
-      <span>Concepto</span>
-      <span>Módulo</span>
-      <span>Tipo</span>
-      <span>Horas est.</span>
-      <span>Total</span>
-    </div>
+  <!-- TRES BLOQUES EN PARALELO -->
+  <div style="display:grid; grid-template-columns:1fr 1fr 1fr; gap:20px; margin-bottom:32px;">
 
-    <div class="budget-row group-label">
-      <div class="concept">MÓDULO 1 — Análisis · Nuevas empresas</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Coordinación y diseño del programa<small>Reuniones con entidad, adaptación de materiales</small></div>
-      <div class="budget-cell"><span class="tag-mod an">Análisis</span></div>
-      <div class="budget-cell">Estratégica</div>
-      <div class="budget-cell">3h</div>
-      <div class="budget-cell price">300 €</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Test inicial + Auditorías Digitales<small>Est. 6–8 empresas · 3h/empresa · 75€/h</small></div>
-      <div class="budget-cell"><span class="tag-mod an">Análisis</span></div>
-      <div class="budget-cell">Técnica I</div>
-      <div class="budget-cell">~21–24h</div>
-      <div class="budget-cell price">1.800 €</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Tutorías de acompañamiento individuales<small>Est. 2 sesiones/empresa · 75€/h</small></div>
-      <div class="budget-cell"><span class="tag-mod an">Análisis</span></div>
-      <div class="budget-cell">Técnica I</div>
-      <div class="budget-cell">~16–20h</div>
-      <div class="budget-cell price">1.500 €</div>
-    </div>
-
-    <div class="budget-row group-label">
-      <div class="concept">MÓDULO 2 — Seguimiento · Empresas 1ª Oleada</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Check-up y revisión de avances<small>Empresas participantes · sesión de 1,5h cada una</small></div>
-      <div class="budget-cell"><span class="tag-mod se">Seguimiento</span></div>
-      <div class="budget-cell">Técnica I</div>
-      <div class="budget-cell">~16h</div>
-      <div class="budget-cell price">1.200 €</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Sesiones de profundización individuales<small>Est. 1–2 sesiones por empresa según necesidad</small></div>
-      <div class="budget-cell"><span class="tag-mod se">Seguimiento</span></div>
-      <div class="budget-cell">Técnica I</div>
-      <div class="budget-cell">~16h</div>
-      <div class="budget-cell price">1.200 €</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Informes de evolución por empresa<small>Comparativa oleada 1 vs 2 · entregable para entidad</small></div>
-      <div class="budget-cell"><span class="tag-mod se">Seguimiento</span></div>
-      <div class="budget-cell">Técnica II</div>
-      <div class="budget-cell">4h</div>
-      <div class="budget-cell price">300 €</div>
+    <!-- BLOQUE FIJO -->
+    <div style="background:var(--navy); border-radius:20px; overflow:hidden;">
+      <div style="padding:24px 28px 16px; border-bottom:1px solid rgba(255,255,255,0.08);">
+        <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.35); margin-bottom:6px;">Coste fijo del programa</div>
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:22px; color:var(--white);">1.850 €</div>
+        <div style="font-size:11px; color:rgba(255,255,255,0.35); margin-top:2px;">+ desplazamiento variable</div>
+      </div>
+      <div style="padding:16px 28px; display:flex; flex-direction:column; gap:10px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">Reunión inicial + diseño del proceso</span>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:var(--white);">200€ · 2h</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">Apoyo en captación · materiales y formularios</span>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:var(--white);">150€ · 2h</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">Desarrollo metodológico 2ª oleada</span>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:var(--white);">250€ · 3h</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">3 Workshops grupales · prep + ejecución</span>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:var(--white);">800€ · 8h</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center; padding-bottom:8px; border-bottom:1px solid rgba(255,255,255,0.05);">
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">Coordinación continua con entidad</span>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:var(--white);">225€ · 3h</span>
+        </div>
+        <div style="display:flex; justify-content:space-between; align-items:center;">
+          <span style="font-size:12px; color:rgba(255,255,255,0.55);">Informe final programa para entidad</span>
+          <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:12px; color:var(--white);">225€ · 3h</span>
+        </div>
+        <!-- DESPLAZAMIENTO -->
+        <div style="margin-top:8px; background:rgba(77,217,192,0.08); border:1px solid rgba(77,217,192,0.18); border-radius:10px; padding:10px 12px;">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:11px; color:var(--cyan); margin-bottom:4px;">🚗 Desplazamiento · variable</div>
+          <div style="font-size:11px; color:rgba(255,255,255,0.4); line-height:1.5;">Bilbao–Amurrio: ~74km ida/vuelta × 0,26€/km ≈ 19€/visita. Estimando 2 visitas presenciales agrupadas por empresa.</div>
+          <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:13px; color:var(--cyan); margin-top:6px;">25€ × N empresas</div>
+        </div>
+      </div>
     </div>
 
-    <div class="budget-row group-label">
-      <div class="concept">FORMACIÓN GRUPAL & COMUNIDAD</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">2–3 Workshops grupales temáticos<small>Sesiones abiertas a todas las empresas · 2h/taller</small></div>
-      <div class="budget-cell"><span class="tag-mod co">Comunidad</span></div>
-      <div class="budget-cell">Formativa</div>
-      <div class="budget-cell">6–8h</div>
-      <div class="budget-cell price">1.200 €</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Jornada de cierre y celebración colectiva<small>Resumen de resultados + dinámica de comunidad</small></div>
-      <div class="budget-cell"><span class="tag-mod co">Comunidad</span></div>
-      <div class="budget-cell">Formativa</div>
-      <div class="budget-cell">3h</div>
-      <div class="budget-cell price">450 €</div>
-    </div>
-    <div class="budget-row">
-      <div class="concept">Coordinación global e informes finales para entidad<small>Seguimiento continuo, comunicación y reporting</small></div>
-      <div class="budget-cell"><span class="tag-mod co">Comunidad</span></div>
-      <div class="budget-cell">Estratégica</div>
-      <div class="budget-cell">5h</div>
-      <div class="budget-cell price">500 €</div>
+    <!-- BLOQUE INICIACIÓN -->
+    <div style="background:var(--cyan); border-radius:20px; overflow:hidden;">
+      <div style="padding:24px 28px 16px; border-bottom:1px solid rgba(26,16,64,0.1);">
+        <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(26,16,64,0.5); margin-bottom:6px;">Paquete por empresa</div>
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:28px; color:var(--navy);">700 €</div>
+        <div style="font-size:11px; color:rgba(26,16,64,0.5); margin-top:2px;">Módulo Iniciación</div>
+      </div>
+      <div style="padding:16px 28px; display:flex; flex-direction:column; gap:10px;">
+        <div style="padding-bottom:10px; border-bottom:1px solid rgba(26,16,64,0.08);">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">Diagnóstico · 3h · 225€</div>
+          <div style="font-size:11px; color:rgba(26,16,64,0.6); line-height:1.5;">Entrevista telefónica + análisis interno = Informe Diagnóstico</div>
+        </div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">Acompañamiento · 5h · 475€</div>
+          <div style="font-size:11px; color:rgba(26,16,64,0.6); line-height:1.5;">2–3 tutorías (4h) + seguimiento/consultas + informe final de resultados y próximos pasos</div>
+        </div>
+      </div>
     </div>
 
-    <div class="budget-total">
-      <div class="total-label">TOTAL ORIENTATIVO</div>
-      <div></div><div></div><div></div>
-      <div class="total-price">~8.450 – 11.000 €</div>
+    <!-- BLOQUE SEGUIMIENTO -->
+    <div style="background:var(--yellow); border-radius:20px; overflow:hidden;">
+      <div style="padding:24px 28px 16px; border-bottom:1px solid rgba(26,16,64,0.1);">
+        <div style="font-size:10px; letter-spacing:2px; text-transform:uppercase; color:rgba(26,16,64,0.5); margin-bottom:6px;">Paquete por empresa</div>
+        <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:28px; color:var(--navy);">650 €</div>
+        <div style="font-size:11px; color:rgba(26,16,64,0.5); margin-top:2px;">Módulo Seguimiento</div>
+      </div>
+      <div style="padding:16px 28px; display:flex; flex-direction:column; gap:10px;">
+        <div style="padding-bottom:10px; border-bottom:1px solid rgba(26,16,64,0.08);">
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">Revisión y nuevos retos · 2h · 175€</div>
+          <div style="font-size:11px; color:rgba(26,16,64,0.6); line-height:1.5;">Entrevista telefónica + análisis interno = Diagnóstico actualizado</div>
+        </div>
+        <div>
+          <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--navy); margin-bottom:4px;">Acompañamiento · 5h · 475€</div>
+          <div style="font-size:11px; color:rgba(26,16,64,0.6); line-height:1.5;">2–3 tutorías (4h) + seguimiento/consultas + informe final de avances y próximos pasos</div>
+        </div>
+      </div>
     </div>
+
+  </div>
+
+  <!-- TABLA DE ESCENARIOS -->
+  <div style="background:var(--white); border-radius:20px; overflow:hidden; box-shadow:0 4px 40px rgba(26,16,64,0.06);">
+    <div style="background:var(--navy); padding:20px 32px; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1.2fr; gap:8px; align-items:center;">
+      <span style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Escenario</span>
+      <span style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Iniciación</span>
+      <span style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Seguimiento</span>
+      <span style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Fijo</span>
+      <span style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Desplaz.</span>
+      <span style="font-family:'Syne',sans-serif; font-size:11px; letter-spacing:2px; text-transform:uppercase; color:rgba(255,255,255,0.4);">Total</span>
+    </div>
+
+    <!-- FILA A -->
+    <div style="padding:18px 32px; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1.2fr; gap:8px; align-items:center; border-bottom:1px solid rgba(26,16,64,0.06); background:rgba(77,217,192,0.04);">
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:14px; color:var(--navy);">A · 12 empresas</div>
+        <div style="font-size:11px; color:#999; margin-top:2px;">Escenario óptimo</div>
+      </div>
+      <div style="font-size:13px; color:#555;">6 × 700€<br><span style="color:var(--navy); font-weight:600;">4.200€</span></div>
+      <div style="font-size:13px; color:#555;">6 × 650€<br><span style="color:var(--navy); font-weight:600;">3.900€</span></div>
+      <div style="font-size:13px; color:#555; font-weight:600;">1.850€</div>
+      <div style="font-size:13px; color:#555;">12 × 25€<br><span style="color:var(--navy); font-weight:600;">300€</span></div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:17px; color:var(--navy);">10.250€</div>
+    </div>
+
+    <!-- FILA B -->
+    <div style="padding:18px 32px; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1.2fr; gap:8px; align-items:center; border-bottom:1px solid rgba(26,16,64,0.06);">
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:14px; color:var(--navy);">B · 11 empresas</div>
+        <div style="font-size:11px; color:#999; margin-top:2px;">Escenario conservador</div>
+      </div>
+      <div style="font-size:13px; color:#555;">6 × 700€<br><span style="color:var(--navy); font-weight:600;">4.200€</span></div>
+      <div style="font-size:13px; color:#555;">5 × 650€<br><span style="color:var(--navy); font-weight:600;">3.250€</span></div>
+      <div style="font-size:13px; color:#555; font-weight:600;">1.850€</div>
+      <div style="font-size:13px; color:#555;">11 × 25€<br><span style="color:var(--navy); font-weight:600;">275€</span></div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:17px; color:var(--navy);">9.575€</div>
+    </div>
+
+    <!-- FILA C -->
+    <div style="padding:18px 32px; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1.2fr; gap:8px; align-items:center; border-bottom:1px solid rgba(26,16,64,0.06);">
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:14px; color:var(--navy);">C · 10 empresas</div>
+        <div style="font-size:11px; color:#999; margin-top:2px;">Mínimo recomendado</div>
+      </div>
+      <div style="font-size:13px; color:#555;">5 × 700€<br><span style="color:var(--navy); font-weight:600;">3.500€</span></div>
+      <div style="font-size:13px; color:#555;">5 × 650€<br><span style="color:var(--navy); font-weight:600;">3.250€</span></div>
+      <div style="font-size:13px; color:#555; font-weight:600;">1.850€</div>
+      <div style="font-size:13px; color:#555;">10 × 25€<br><span style="color:var(--navy); font-weight:600;">250€</span></div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:17px; color:var(--navy);">8.850€</div>
+    </div>
+
+    <!-- FILA D -->
+    <div style="padding:18px 32px; display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr 1fr 1.2fr; gap:8px; align-items:center; border-bottom:1px solid rgba(26,16,64,0.06);">
+      <div>
+        <div style="font-family:'Syne',sans-serif; font-weight:700; font-size:14px; color:var(--navy);">D · 12 empresas</div>
+        <div style="font-size:11px; color:#999; margin-top:2px;">Mayor peso en iniciación</div>
+      </div>
+      <div style="font-size:13px; color:#555;">8 × 700€<br><span style="color:var(--navy); font-weight:600;">5.600€</span></div>
+      <div style="font-size:13px; color:#555;">4 × 650€<br><span style="color:var(--navy); font-weight:600;">2.600€</span></div>
+      <div style="font-size:13px; color:#555; font-weight:600;">1.850€</div>
+      <div style="font-size:13px; color:#555;">12 × 25€<br><span style="color:var(--navy); font-weight:600;">300€</span></div>
+      <div style="font-family:'Syne',sans-serif; font-weight:800; font-size:17px; color:var(--navy);">10.350€</div>
+    </div>
+
+    <!-- NOTA FINAL -->
     <div style="padding:16px 32px; background:rgba(26,16,64,0.03);">
       <div style="font-size:12px; color:#888; line-height:1.7;">
-        💡 <strong>Nota:</strong> El presupuesto varía según el nº de empresas nuevas y la intensidad del seguimiento. El rango permite ajustar al techo de 10–12k. <strong>No incluye IVA (21%).</strong> Se puede modularizar si la entidad prefiere contratar por bloques independientes.
+        💡 <strong>Todos los escenarios dentro del rango 9–12k.</strong> El escenario A (6+6) es el óptimo en equilibrio y rentabilidad. El desplazamiento se factura a coste real: 25€/empresa cubre ~2 visitas presenciales agrupadas Bilbao–Amurrio. <strong>No incluye IVA (21%).</strong>
       </div>
     </div>
   </div>
@@ -963,6 +1291,179 @@
       <div class="diff-title">Innovación integrada</div>
       <div class="diff-desc">No esperamos al bloque de "innovación". Lo integramos en cada sesión, cada tutoría, cada workshop de forma natural.</div>
     </div>
+  </div>
+</section>
+
+<!-- CRONOGRAMA -->
+<section class="crono-section">
+  <div class="section-label">Planificación temporal</div>
+  <h2 class="section-title">Cronograma del proceso</h2>
+  <p class="section-desc">Una visión clara de cómo se despliega el programa a lo largo del año, con sus dos módulos y los tres workshops grupales como puntos de encuentro colectivo.</p>
+
+  <div class="crono-wrap">
+
+    <!-- CABECERA MESES -->
+    <div class="crono-months">
+      <div class="crono-month-header"><div class="crono-month-name">Mayo</div></div>
+      <div class="crono-month-header"><div class="crono-month-name">Junio</div></div>
+      <div class="crono-month-header"><div class="crono-month-name">Julio</div></div>
+      <div class="crono-month-header" style="background:rgba(255,255,255,0.02)"><div class="crono-month-name" style="color:rgba(255,255,255,0.2)">Agosto</div></div>
+      <div class="crono-month-header"><div class="crono-month-name">Sept.</div></div>
+      <div class="crono-month-header"><div class="crono-month-name">Oct.</div></div>
+      <div class="crono-month-header"><div class="crono-month-name">Nov.</div></div>
+      <div class="crono-month-header"><div class="crono-month-name">Dic.</div></div>
+    </div>
+
+    <!-- FILA FASE -->
+    <div style="display:grid; grid-template-columns: repeat(8,1fr); margin-top:6px; gap:6px;">
+      <!-- SEGUIMIENTO: Mayo, Junio, Julio -->
+      <div style="grid-column: 1 / 4; background:rgba(245,200,66,0.12); border:1px solid rgba(245,200,66,0.25); border-radius:12px; padding:10px 16px; display:flex; align-items:center; gap:10px;">
+        <div style="width:10px; height:10px; border-radius:3px; background:var(--yellow); flex-shrink:0;"></div>
+        <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--yellow);">SEGUIMIENTO</span>
+        <span style="font-size:11px; color:rgba(255,255,255,0.3); margin-left:4px;">Mayo · Junio · Julio</span>
+      </div>
+      <!-- AGOSTO vacaciones -->
+      <div style="grid-column: 4 / 5; background:rgba(255,255,255,0.02); border:1px solid rgba(255,255,255,0.05); border-radius:12px; display:flex; align-items:center; justify-content:center;">
+        <span style="font-size:11px; color:rgba(255,255,255,0.15); letter-spacing:1px; text-transform:uppercase;">Pausa</span>
+      </div>
+      <!-- INICIACIÓN: Sept → Dic -->
+      <div style="grid-column: 5 / 9; background:rgba(77,217,192,0.12); border:1px solid rgba(77,217,192,0.25); border-radius:12px; padding:10px 16px; display:flex; align-items:center; gap:10px;">
+        <div style="width:10px; height:10px; border-radius:3px; background:var(--cyan); flex-shrink:0;"></div>
+        <span style="font-family:'Syne',sans-serif; font-weight:700; font-size:13px; color:var(--cyan);">INICIACIÓN</span>
+        <span style="font-size:11px; color:rgba(255,255,255,0.3); margin-left:4px;">Septiembre · Octubre · Noviembre · Diciembre</span>
+      </div>
+    </div>
+
+    <!-- CUERPO DETALLE -->
+    <div class="crono-body" style="margin-top:6px;">
+
+      <!-- MAYO -->
+      <div class="crono-col">
+        <div class="crono-pill seguimiento">
+          <div class="crono-pill-title">Check-ups</div>
+          <div class="crono-pill-desc">Revisión de avances con empresas de la 1ª oleada</div>
+        </div>
+      </div>
+
+      <!-- JUNIO -->
+      <div class="crono-col">
+        <div class="crono-pill seguimiento">
+          <div class="crono-pill-title">Tutorías</div>
+          <div class="crono-pill-desc">Sesiones de profundización individuales</div>
+        </div>
+        <div class="crono-pill workshop">
+          <div class="crono-pill-title">🎓 Workshop 1</div>
+          <div class="crono-pill-desc">Dinámica grupal solo con empresas de seguimiento</div>
+        </div>
+      </div>
+
+      <!-- JULIO -->
+      <div class="crono-col">
+        <div class="crono-pill seguimiento">
+          <div class="crono-pill-title">Informes</div>
+          <div class="crono-pill-desc">Entregables de evolución para la entidad</div>
+        </div>
+      </div>
+
+      <!-- AGOSTO -->
+      <div class="crono-col vacaciones">
+        <div class="vac-x">✕</div>
+        <div class="vac-label">Vacaciones</div>
+      </div>
+
+      <!-- SEPTIEMBRE -->
+      <div class="crono-col">
+        <div class="crono-pill iniciacion">
+          <div class="crono-pill-title">Diagnósticos</div>
+          <div class="crono-pill-desc">Test inicial + Auditoría Digital IA para nuevas empresas</div>
+        </div>
+        <div class="crono-pill workshop">
+          <div class="crono-pill-title">🎓 Workshop 2</div>
+          <div class="crono-pill-desc">Dinámica grupal solo con empresas de iniciación</div>
+        </div>
+      </div>
+
+      <!-- OCTUBRE -->
+      <div class="crono-col">
+        <div class="crono-pill iniciacion">
+          <div class="crono-pill-title">Tutorías</div>
+          <div class="crono-pill-desc">Acompañamiento individualizado por empresa</div>
+        </div>
+      </div>
+
+      <!-- NOVIEMBRE -->
+      <div class="crono-col">
+        <div class="crono-pill iniciacion">
+          <div class="crono-pill-title">Tutorías</div>
+          <div class="crono-pill-desc">Consolidación e implementación final</div>
+        </div>
+      </div>
+
+      <!-- DICIEMBRE -->
+      <div class="crono-col">
+        <div class="crono-pill iniciacion">
+          <div class="crono-pill-title">Entregables</div>
+          <div class="crono-pill-desc">Informes finales para la entidad</div>
+        </div>
+        <div class="crono-pill workshop">
+          <div class="crono-pill-title">🎓 Workshop 3</div>
+          <div class="crono-pill-desc">Dinámica grupal conjunta · Iniciación + Seguimiento</div>
+        </div>
+      </div>
+
+    </div><!-- fin crono-body -->
+
+    <div class="crono-legend">
+      <div class="crono-legend-item">
+        <div class="crono-legend-dot" style="background:var(--yellow);"></div>
+        Módulo Seguimiento
+      </div>
+      <div class="crono-legend-item">
+        <div class="crono-legend-dot" style="background:var(--cyan);"></div>
+        Módulo Iniciación
+      </div>
+      <div class="crono-legend-item">
+        <div class="crono-legend-dot" style="background:#f06b6b;"></div>
+        Workshop grupal
+      </div>
+      <div class="crono-legend-item">
+        <div class="crono-legend-dot" style="background:rgba(255,255,255,0.12);"></div>
+        Pausa vacacional
+      </div>
+    </div>
+
+    <!-- BIBLIOGRAFÍA WORKSHOPS -->
+    <div class="ws-bib">
+
+      <div class="ws-card">
+        <div class="ws-num">1</div>
+        <div class="ws-tag">🎓 Workshop 1</div>
+        <div class="ws-who seg">Solo empresas de seguimiento</div>
+        <div class="ws-title">Contrastar avances y encaminar el cierre</div>
+        <div class="ws-desc">Una dinámica grupal con las empresas que llevan ya un recorrido desde el primer Impulso Digital. El objetivo es compartir entre ellas cómo ha evolucionado su situación, poner en común novedades de sus casos y crear un espacio donde contrastar avances reales. También sirve como punto de partida para orientar los informes finales de seguimiento, con consejos concretos surgidos del propio grupo.</div>
+        <div class="ws-when">Junio · Durante el proceso de tutorías</div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-num">2</div>
+        <div class="ws-tag">🎓 Workshop 2</div>
+        <div class="ws-who ini">Solo empresas de iniciación</div>
+        <div class="ws-title">Establecer un denominador común desde el inicio</div>
+        <div class="ws-desc">Un espacio exclusivo para las nuevas empresas del programa. La idea es que puedan compartir su visión sobre la IA, sus expectativas y su nivel de implicación antes de que el proceso avance demasiado. Usando experiencias de oleadas anteriores como referencia, se crea una base común entre ellas. Esto permite que en el Workshop 3 final podamos contrastar esas expectativas iniciales con la realidad vivida, añadiendo mucho más valor al cierre.</div>
+        <div class="ws-when">Septiembre · Al arrancar el módulo de iniciación</div>
+      </div>
+
+      <div class="ws-card">
+        <div class="ws-num">3</div>
+        <div class="ws-tag">🎓 Workshop 3</div>
+        <div class="ws-who both">Iniciación + Seguimiento</div>
+        <div class="ws-title">Compartir, cerrar y generar comunidad</div>
+        <div class="ws-desc">La jornada de cierre del programa. Por primera vez, empresas de iniciación y de seguimiento comparten el mismo espacio. El objetivo es poner en valor los diferentes caminos recorridos, contrastar expectativas con resultados reales y generar ese tejido comunitario que hace de Amurrio algo especial. Un cierre que no es un final — es el punto de partida de una comunidad que sigue creciendo junta.</div>
+        <div class="ws-when">Diciembre · Jornada de cierre del programa</div>
+      </div>
+
+    </div><!-- fin ws-bib -->
+
   </div>
 </section>
 
